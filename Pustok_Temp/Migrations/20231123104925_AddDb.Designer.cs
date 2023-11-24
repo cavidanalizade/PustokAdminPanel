@@ -12,8 +12,8 @@ using Pustok_Temp.DAL;
 namespace Pustok_Temp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231121133835_CategoryUpdate")]
-    partial class CategoryUpdate
+    [Migration("20231123104925_AddDb")]
+    partial class AddDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

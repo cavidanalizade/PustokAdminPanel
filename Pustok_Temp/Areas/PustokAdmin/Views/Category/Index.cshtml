@@ -1,0 +1,123 @@
+﻿@model Pustok_Temp.ViewModels.HomeVM
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="table-responsive pt-3">
+
+                <a class="btn btn-primary" asp-controller="Category" asp-action="Create">Create</a>
+                <a class="btn btn-primary" asp-controller="Category" asp-action="DeleteAll">Delete All</a>
+
+
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Category Name
+                            </th>
+                            <th>
+                                Book Count
+                            </th>
+           
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.categories)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Books.ToList().Count
+
+                                    <div style="margin-left:30px">
+
+                                        <a class="btn btn-primary" asp-controller="Category" asp-action="AddBook">Add Book</a>
+
+                                    </div>
+                                </td>
+
+
+
+                            </tr>
+                        }
+
+ 
+         
+
+
+
+                    </tbody>
+                </table>
+
+
+                <div style="margin-top:100px">
+
+                <a class="btn btn-primary" asp-controller="Category" asp-action="DeleteAllBooks">Delete All Books</a>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Book Name
+                                </th>
+                                <th>
+                                    Category Id
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.books)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Id
+                                    </td>
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @item.CategoryId
+
+                                        <div style="margin-left:30px">
+
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="UploadBook">Upload Book</a>
+
+                                        </div>
+
+                                    </td>
+
+
+
+                                </tr>
+                            }
+
+
+
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

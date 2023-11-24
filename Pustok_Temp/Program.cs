@@ -9,7 +9,7 @@ namespace Pustok_Temp
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("server = DESKTOP-AKQ170U; database=PustokDB; Trusted_connection=true; Integrated security=true; Encrypt=false"));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("server=DESKTOP-HD09TL8; database=PustokAdmin; Trusted_connection=true; Integrated security=true; Encrypt=false"));
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();
@@ -18,7 +18,7 @@ namespace Pustok_Temp
             {
                 endpoints.MapControllerRoute(
                   name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
                 );
             }); 
 

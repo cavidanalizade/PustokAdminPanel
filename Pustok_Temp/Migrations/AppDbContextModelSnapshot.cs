@@ -31,7 +31,6 @@ namespace Pustok_Temp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -47,23 +46,26 @@ namespace Pustok_Temp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImgUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
+                    b.Property<double?>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("books");
                 });
@@ -90,7 +92,7 @@ namespace Pustok_Temp.Migrations
                     b.ToTable("bookimages");
                 });
 
-            modelBuilder.Entity("Pustok_Temp.Models.Categories", b =>
+            modelBuilder.Entity("Pustok_Temp.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,11 +140,15 @@ namespace Pustok_Temp.Migrations
                 {
                     b.HasOne("Pustok_Temp.Models.Author", "Authors")
                         .WithMany("books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Pustok_Temp.Models.Category", "Categories")
+                        .WithMany("Books")
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Authors");
+
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Pustok_Temp.Models.Book_Img", b =>
@@ -164,6 +170,11 @@ namespace Pustok_Temp.Migrations
             modelBuilder.Entity("Pustok_Temp.Models.Book", b =>
                 {
                     b.Navigation("Bookimages");
+                });
+
+            modelBuilder.Entity("Pustok_Temp.Models.Category", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

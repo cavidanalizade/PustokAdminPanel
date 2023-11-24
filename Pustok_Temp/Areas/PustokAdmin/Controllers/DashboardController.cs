@@ -1,6 +1,17 @@
-﻿namespace Pustok_Temp.Areas.PustokAdmin.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Pustok_Temp.Areas.PustokAdmin.Controllers
 {
-    public class DashboardController
+    [Area("PustokAdmin")]
+    public class DashboardController:Controller
     {
+
+
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
     }
 }
