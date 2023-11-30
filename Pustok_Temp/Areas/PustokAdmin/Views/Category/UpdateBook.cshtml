@@ -1,6 +1,7 @@
-﻿@model Book
+﻿@using Pustok_Temp.Areas.PustokAdmin.ViewModels
+@model UpdateBookVM
 <div class="container">
-    <h1>Add Books</h1>
+    <h1>Update Book</h1>
     <form method="post">
         <div class="mb-3">
             <label asp-for="Title" class="form-label">New title</label>
@@ -16,6 +17,19 @@
             <label asp-for="Price" class="form-label">New Price</label>
             <input asp-for="Price" type="text" class="form-control">
             <span asp-validation-for="Price" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId">Categories</label>
+            <select class="form-select" asp-for="CategoryId" asp-items="new SelectList(ViewBag.Categories,nameof(Category.Id), nameof(Category.Name))">
+                <option selected> Browse All Categories...</option>
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId">Categories</label>
+            <select multiple class="form-select" asp-for="CategoryId" asp-items="new SelectList(ViewBag.Categories,nameof(Category.Id), nameof(Category.Name))">
+
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

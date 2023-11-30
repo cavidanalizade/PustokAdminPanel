@@ -36,4 +36,9 @@
     <None Include="wwwroot\bootstrap-5.0.2\bootstrap-5.0.2\.github\workflows\release-notes.yml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Base\" />
+    <Folder Include="Helper\" />
+  </ItemGroup>
+
 </Project>

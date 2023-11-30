@@ -21,35 +21,63 @@
                             <th>
                                 Book Count
                             </th>
+                            <th>
+                                Actions
+                            </th>
            
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.categories)
-                        {
-
-                            <tr>
-                                <td>
-                                    @item.Id
-                                </td>
-                                <td>
-                                    @item.Name
-                                </td>
-                                <td>
-                                    @item.Books.ToList().Count
-
-                                    <div style="margin-left:30px">
-
-                                        <a class="btn btn-primary" asp-controller="Category" asp-action="AddBook">Add Book</a>
-
-                                    </div>
-                                </td>
+                        @if(Model.categories!=null){
+                            @foreach (var item in Model.categories)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Id
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @item.Books.Count
 
 
+                                    </td>
+                                    <td>
+                                        <div style="display:inline-block">
 
-                            </tr>
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="AddBook">Add Book</a>
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="UpdateCategory" asp-route-id="@item.Id">Update Category</a>
+
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="DeleteCategory" asp-route-id=@item.Id onclick="myFunction()">Delete</a>
+
+                                            <script>
+                                                function myFunction() {
+                                                    alert("kateqoriya silindi");
+                                                }
+                                            </script>
+                                            <script>
+                                                function myFunction() {
+                                                    let text;
+                                                    if (confirm("Press a button!") == true) {
+                                                        text = "You pressed OK!";
+                                                    } else {
+                                                        text = "You canceled!";
+                                                    }
+                                                    document.getElementById("demo").innerHTML = text;
+                                                }
+                                            </script>
+
+                                        </div>
+                                    </td>
+
+
+
+                                </tr>
+                            }
                         }
+                    
 
  
          
@@ -62,7 +90,13 @@
 
                 <div style="margin-top:100px">
 
+                    <div style="display:inline-block">
                 <a class="btn btn-primary" asp-controller="Category" asp-action="DeleteAllBooks">Delete All Books</a>
+
+                        <a class="btn btn-primary" asp-controller="Category" asp-action="AddBook">Add Book</a>
+
+
+                    </div>
                     <table class="table table-dark">
                         <thead>
                             <tr>
@@ -75,7 +109,12 @@
                                 <th>
                                     Category Id
                                 </th>
-
+                                 <th>
+                                    Book Image
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
 
                             </tr>
                         </thead>
@@ -92,24 +131,30 @@
                                     </td>
                                     <td>
                                         @item.CategoryId
-
-                                        <div style="margin-left:30px">
-
-                                            <a class="btn btn-primary" asp-controller="Category" asp-action="UploadBook">Upload Book</a>
-
+                                    </td>
+                                    <td>
+                                        <div>
+                                        <img src="~/image/products/@item.ImgUrl" style="width:60px; height:60px">
                                         </div>
+     
+                                    </td>
+
+                                    <td>
+                                        
+                                        <div style="display:inline-block">
+
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="UpdateBook" asp-route-id=@item.Id>Update Book</a>
+                                            <a class="btn btn-primary" asp-controller="Category" asp-action="DeleteBook" asp-route-id=@item.Id>Delete</a>
+                                        </div>
+
 
                                     </td>
 
 
 
+
                                 </tr>
                             }
-
-
-
-
-
 
                         </tbody>
                     </table>

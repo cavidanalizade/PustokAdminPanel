@@ -1,4 +1,6 @@
-﻿namespace Pustok_Temp.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Pustok_Temp.Models
 {
     public class Book
     {
@@ -11,7 +13,9 @@
         public List<Book_Img>? Bookimages { get; set; }
         public int? CategoryId { get; set; }
         public Category? Categories { get; set; }
+        public List<BookTag>? BookTags { get; set; }
 
-
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
     }
 }

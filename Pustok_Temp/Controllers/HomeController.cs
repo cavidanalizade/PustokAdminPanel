@@ -24,5 +24,18 @@ namespace Pustok_Temp.Controllers
             };
             return View(homeVM);
         }
+        public IActionResult Detail()
+        {
+
+            HomeVM homeVM = new HomeVM()
+            {
+                authors = _context.authors.ToList(),
+                books = _context.books.ToList(),
+                books_img = _context.bookimages.ToList(),
+                categories = _context.categories.ToList(),
+                sliders = _context.sliders.ToList(),
+            };
+            return View(homeVM);
+        }
     }
 }

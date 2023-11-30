@@ -1,4 +1,6 @@
-﻿@model Book
+﻿
+@using Pustok_Temp.Areas.PustokAdmin.ViewModels
+@model CreateBookVM
 <div class="container">
     <h1>Add Books</h1>
     <form method="post">
@@ -18,10 +20,27 @@
             <span asp-validation-for="Price" style="color:red"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="CategoryId" class="form-label">Category Id</label>
-            <input asp-for="CategoryId" type="text" class="form-control">
-            <span asp-validation-for="CategoryId" style="color:red"></span>
+            <label asp-for="CategoryId">Categories</label>
+            <select class="form-select" asp-for="CategoryId" asp-items="new SelectList(ViewBag.Categories,nameof(Category.Id), nameof(Category.Name))">
+                <option selected> Browse All Categories...</option>
+
+            </select>
         </div>
+        <div class="mb-3">
+            <label asp-for="AuthorId">Authors</label>
+            <select class="form-select" asp-for="AuthorId" asp-items="new SelectList(ViewBag.Authors,nameof(Author.Id), nameof(Author.Name))">
+          <option selected>Browse All Authors...</option></a>
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AuthorId">Authors</label>
+            <select class="multiple form-select" asp-for="AuthorId" asp-items="new SelectList(ViewBag.tags,nameof(Tag.Id), nameof(Tag.Name))">
+                <option selected>Browse All Tags...</option></a>
+
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
