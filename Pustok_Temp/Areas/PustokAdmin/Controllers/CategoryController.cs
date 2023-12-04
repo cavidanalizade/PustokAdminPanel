@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pustok_Temp.Areas.PustokAdmin.ViewModels;
 using Pustok_Temp.DAL;
+using Pustok_Temp.Helper;
 using Pustok_Temp.Models;
 using Pustok_Temp.ViewModels;
 
@@ -11,9 +12,12 @@ namespace Pustok_Temp.Areas.PustokAdmin.Controllers
     public class CategoryController : Controller
     {
         AppDbContext _context;
-        public CategoryController(AppDbContext context)
+        private readonly IWebHostEnvironment _environment;
+
+        public CategoryController(AppDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment=environment;
         }
 
         public IActionResult Index()
@@ -113,7 +117,17 @@ namespace Pustok_Temp.Areas.PustokAdmin.Controllers
 
              ViewBag.Categories = await _context.categories.ToListAsync();
             ViewBag.Authors= await _context.authors.ToListAsync();
-
+/*            if (!createBookVM.ImageFile.ContentType.Contains("image"))
+            {
+                ModelState.AddModelError("ImageFile", "Yalnizca Sekil yukluye bilersiz");
+                return View();
+            }
+            if (createBookVM.ImageFile.Length > 2097152)
+            {
+                ModelState.AddModelError("ImageFile", "Maxsimum 2mb yukluye bilersiz!!");
+                return View();
+            }*/
+            createBookVM.ImgUrl=createBookVM.ImageFile.Upload(_environment.WebRootPath, @"\Upload\BookImage\");
 
             Book book = new Book
             {

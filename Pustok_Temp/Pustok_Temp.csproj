@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Base\" />
-    <Folder Include="Helper\" />
+    <Folder Include="wwwroot\Upload\BookImage\" />
   </ItemGroup>
 
 </Project>

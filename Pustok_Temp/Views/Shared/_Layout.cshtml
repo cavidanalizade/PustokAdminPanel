@@ -1,5 +1,5 @@
 ﻿@using Pustok_Temp.ViewModels;
-@model HomeVM;
+@*@model HomeVM;*@
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -200,7 +200,7 @@
                                         categories
                                     </a>
                                     <ul class="category-menu">
-                                             @foreach (var itemP in Model.categories.FindAll(c => c.ParentCategoryId == null))
+                        @*                     @foreach (var itemP in Model.categories.FindAll(c => c.ParentCategoryId == null))
                                     {
 
                                         <li class="cat-item has-children">
@@ -209,7 +209,7 @@
                                                 @foreach (var item in Model.categories.FindAll(c => c.ParentCategoryId == itemP.Id))
                                                 {
                                                     <li><a href="#">@item.Name</a></li>
-                                                }
+                                                }*@
                                             </ul>
                                         </li>
                                         }

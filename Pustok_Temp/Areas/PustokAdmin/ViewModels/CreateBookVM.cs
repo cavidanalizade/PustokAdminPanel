@@ -1,4 +1,6 @@
-﻿namespace Pustok_Temp.Areas.PustokAdmin.ViewModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Pustok_Temp.Areas.PustokAdmin.ViewModels
 {
     public class CreateBookVM
     {
@@ -9,7 +11,8 @@
         public int? AuthorId { get; set; }
         public string Tag { get; set; }
         List<int> TagIds { get; set; }
-
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
     }
 }

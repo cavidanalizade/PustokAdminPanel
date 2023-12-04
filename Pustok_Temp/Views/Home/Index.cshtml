@@ -502,7 +502,7 @@
                                             @item.title
                                         </h1>
                                         <h2>@item.description</h2>
-                                        <a href="shop-grid.html" class="btn btn-outlined--primary">
+                                        <a asp-action="Detail" asp-controller="Home" asp-route-id="@item.Id">
                                             $@item.price - Order Now!
                                         </a>
                                     </div>
@@ -654,13 +654,13 @@
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
-                                                <img src="~/image/products/@item.ImgUrl" alt="">
+                                                <img src="~/Upload//BookImage/@item.ImgUrl" alt="">
                                                 <div class="hover-contents">
                                                     <a href="product-details.html" class="hover-image">
-                                                        <img src="~/image/products/@item.Bookimages" alt="">
+                                                        <img src="~/Upload/BookImage/@item.ImgUrl" alt="">
                                                     </a>
                                                     <div class="hover-btns">
-                                                        <a href="cart.html" class="single-btn">
+                                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id">
                                                             <i class="fas fa-shopping-basket"></i>
                                                         </a>
                                                         <a href="wishlist.html" class="single-btn">

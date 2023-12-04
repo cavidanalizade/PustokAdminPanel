@@ -10,6 +10,7 @@ namespace Pustok_Temp
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("server=DESKTOP-HD09TL8; database=PustokAdmin; Trusted_connection=true; Integrated security=true; Encrypt=false"));
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();
